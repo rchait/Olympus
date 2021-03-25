@@ -12,6 +12,11 @@ namespace ProjectManagement.Data.Implementation
     public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {
         private readonly PMContext _context;
+
+	public BaseRepository(PMContext dbContext)
+	{
+	_context = dbContext;
+	}
         public T Add(T entity)
         {
             _context.Set<T>().Add(entity);
