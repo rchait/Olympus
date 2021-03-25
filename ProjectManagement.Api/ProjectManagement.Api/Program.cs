@@ -22,6 +22,7 @@ namespace ProjectManagement.Api
                 var context = services.GetRequiredService<PMContext>();
                 context.SeedInitialData();
             }
+            host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

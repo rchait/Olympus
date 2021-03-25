@@ -37,6 +37,7 @@ namespace ProjectManagement.Shared
             Projects.Add(project1);
             Projects.Add(project2);
             Projects.Add(project3);
+            this.SaveChanges();
         }
     }
 }
