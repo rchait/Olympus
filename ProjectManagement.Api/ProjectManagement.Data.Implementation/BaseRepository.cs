@@ -4,34 +4,43 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ProjectManagement.Shared;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProjectManagement.Data.Implementation
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {
+        private readonly PMContext _context;
         public T Add(T entity)
         {
-            throw new NotImplementedException();
+            _context.Set<T>().Add(entity);
+            _context.SaveChanges();
+            return entity;
         }
 
         public void Delete(long id)
         {
-            throw new NotImplementedException();
+            T entity = _context.Set<T>().Find(id);
+            _context.Set<T>().Remove(entity);
+            _context.SaveChanges();
         }
 
         public IQueryable<T> Get()
         {
-            throw new NotImplementedException();
+            return _context.Set<T>();
         }
 
         public T Get(long id)
         {
-            throw new NotImplementedException();
+            return _context.Set<T>().Find(id);
         }
 
         public T Update(T entity)
         {
-            throw new NotImplementedException();
+            _context.Set<T>().Update(entity);
+            _context.SaveChanges();
+            return entity;
         }
     }
 }
