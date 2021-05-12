@@ -24,6 +24,7 @@ namespace ProjectManagement.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+	    services.AddCors();
             services.AddScoped<IBaseRepository<User>, BaseRepository<User>>();
             services.AddScoped<IBaseRepository<Task>, BaseRepository<Task>>();
             services.AddScoped<IBaseRepository<Project>, BaseRepository<Project>>();
@@ -41,6 +42,7 @@ namespace ProjectManagement.Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+	    app.UseCors(x=> x.AllowAnyMethod().AllowAnyHeader().SetIsOriginAllowed(origin=>true).AllowCredentials());
 
             app.UseAuthorization();
 

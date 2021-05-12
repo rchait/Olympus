@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using ProjectManagement.Data.Interfaces;
 using ProjectManagement.Entities;
 
 namespace ProjectManagement.Api.Controllers
 {
+    [EnableCors]
     public class BaseController<T> : ControllerBase where T: BaseEntity
     {
         private readonly IBaseRepository<T> _repository;

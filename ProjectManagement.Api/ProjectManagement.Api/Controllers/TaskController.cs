@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using ProjectManagement.Data.Interfaces;
 using ProjectManagement.Entities;
 
 namespace ProjectManagement.Api.Controllers
 {
     [ApiController]
+    [EnableCors]
     [Route("api/Task")]
     public class TaskController : BaseController<Task>
     {
